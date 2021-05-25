@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using UniRegistrar.Models;
+@model List<UniRegistrar.Models.Course>;
+
+<h1>Courses offered by our fine magical school:</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>Wow what an underfunded school we have no courses</h3>
+}
+
+<ul>
+  @foreach(Course course in Model)
+  {
+    <li>@Html.ActionLink($"{course.CourseName}","Details", new { id = course.CourseId })</li>
+  }
+</ul>
+
+<ul class = "menu-links">
+  <li>@Html.ActionLink("Add new course", "Create")</li>
+  <li>@Html.ActionLink("Home","Index","Home")</li>
+</ul>
