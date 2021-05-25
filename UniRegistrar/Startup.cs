@@ -25,7 +25,7 @@ namespace UniRegistrar
       services.AddMvc();
 
       services.AddEntityFrameworkMySql()
-        .AddDbContext<RegistrarContext>(options => options
+        .AddDbContext<UniRegistrarContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
     }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace UniRegistrar.Models
 {
@@ -6,7 +7,7 @@ namespace UniRegistrar.Models
   {
     public Student()
     {
-      this.joinEntities = new HashSet<CourseStudent>();
+      this.JoinEntities = new HashSet<CourseStudent>();
     }
 
     public int StudentId { get; set; }
@@ -17,5 +18,4 @@ namespace UniRegistrar.Models
     public virtual ICollection<CourseStudent> JoinEntities { get; }
 
   }
-
 }
