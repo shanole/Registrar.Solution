@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniRegistrar.Models.Course
+
+<h2>Course Details</h2>
+<h3>@Html.DisplayFor(model => model.CourseNumber) @Html.DisplayFor(model => model.CourseName)</h3>
+<h4>Course Description: </h4>
+<p>@Html.DisplayFor(model => model.CourseDescription)</p>
+
+<h4>Students currently enrolled:</h4>
+@if(Model.JoinEntities.Count == 0)
+{
+  <p>No students have currently signed up for this course.</p>
+}
+<ul>
+  @foreach (var join in Model.JoinEntities)
+  {
+    <li>@Html.ActionLink($"{join.Student.StudentName}","Details","Student", new {id = join.Student.StudentId})</li>
+  }
+</ul>
+
+<ul class="menu-links">
+  <li>@Html.ActionLink("Edit course","Edit", new {id = Model.CourseId})</li>
+  <li>@Html.ActionLink("Delete this course","Delete", new {id = Model.CourseId})</li>
+  <li>@Html.ActionLink("Back to course catalog","Index")</li>
+</ul>

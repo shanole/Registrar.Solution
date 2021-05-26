@@ -17,8 +17,8 @@ namespace UniRegistrar.Controllers
 
     public ActionResult Index()
     {
-      List<Course> model = _db.Courses.ToList();
-      return View(model);
+      IEnumerable<Course> sortedCourses = _db.Courses.OrderBy(course => course.CourseNumber);
+      return View(sortedCourses.ToList());
     }
 
     public ActionResult Create()
@@ -32,6 +32,14 @@ namespace UniRegistrar.Controllers
       _db.Courses.Add(course);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+    public ActionResult Details(int id)
+    {
+      Course thisCourse = _db.Courses
+        .Include(course => course.JoinEntities)
+        .ThenInclude(join => join.Student)
+        .FirstOrDefault(course => course.CourseId == id);
+      return View(thisCourse);
     }
   }
 }
