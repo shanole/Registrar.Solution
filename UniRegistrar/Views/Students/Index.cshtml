@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using UniRegistrar.Models;
+@model List<UniRegistrar.Models.Student>;
+
+<h1>Students</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No students have been added yet</h3>
+}
+
+<ul>
+  @foreach(Student student in Model)
+  {
+    <li>@Html.ActionLink($"{student.StudentName}", "Details", new { id = student.StudentId })</li>
+  }
+</ul>
+
+<ul class="menu-links">
+  <li>@Html.ActionLink("Add a new student", "Create")</li>
+  <li>@Html.ActionLink("Back to home", "Index", "Home")</li>
+</ul>
+
