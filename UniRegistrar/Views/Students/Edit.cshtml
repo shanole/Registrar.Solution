@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniRegistrar.Models.Student
+
+<h2>Edit student details</h2>
+<h4>@Html.DisplayFor(model => model.StudentName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.StudentId)
+  @Html.Label("Name")
+  @Html.EditorFor(model => model.StudentName, new { @class = "form-control"})
+
+  @Html.Label("Enrollment date")
+  @Html.EditorFor(model => model.EnrollmentDate, new { @type = "date", @class = "form-control datepicker" })
+
+  <input type="submit" value="Save" />
+}
+
+<ul class="menu-links">
+  <li>@Html.ActionLink("Back to student directory", "Index")</li>
+</ul>
