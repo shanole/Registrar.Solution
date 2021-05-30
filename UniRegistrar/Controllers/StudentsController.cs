@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using UniRegistrar.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft .EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UniRegistrar.Controllers
@@ -60,7 +60,7 @@ namespace UniRegistrar.Controllers
     {
       _db.Entry(student).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Details", new {id = student.StudentId});
+      return RedirectToAction("Details", new { id = student.StudentId });
     }
 
     public ActionResult AddCourse(int id)
@@ -75,10 +75,13 @@ namespace UniRegistrar.Controllers
     {
       if (CourseId != 0)
       {
-        _db.CourseStudent.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
+        if (_db.CourseStudent.Any(join => join.CourseId == CourseId && join.StudentId == student.StudentId) == false)
+        {
+          _db.CourseStudent.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
+        }
       }
       _db.SaveChanges();
-      return RedirectToAction("Details", new {id = student.StudentId});
+      return RedirectToAction("Details", new { id = student.StudentId });
     }
   }
 }
