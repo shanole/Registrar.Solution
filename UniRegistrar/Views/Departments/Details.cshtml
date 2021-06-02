@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniRegistrar.Models.Department
+
+<h2>Department Details</h2>
+<h3>@Html.DisplayFor(model => model.DepartmentName)</h3>
+
+<h4>Courses in this department:</h4>
+@if(Model.Courses.Count == 0)
+{
+  <p>There are currently no courses in this department.</p>
+}
+<ul>
+  @foreach (var course in Model.Courses)
+  {
+    <li>@Html.ActionLink($"{course.CourseName}","Details","Courses", new {id = course.CourseId})</li>
+  }
+</ul>
+
+<h4>Students in this department:</h4>
+@if(Model.Students.Count == 0)
+{
+  <p>No students are currently assigned to this department.</p>
+}
+<ul>
+  @foreach (var student in Model.Students)
+  {
+    <li>@Html.ActionLink($"{student.StudentName}","Details","Students", new {id = student.StudentId})</li>
+  }
+</ul>
+
+<ul class="menu-links">
+  <li>@Html.ActionLink("Edit Department","Edit", new {id = Model.DepartmentId})</li>
+  <li>@Html.ActionLink("Delete this Department","Delete", new {id = Model.DepartmentId})</li>
+  <li>@Html.ActionLink("Back to Department catalog","Index")</li>
+</ul>

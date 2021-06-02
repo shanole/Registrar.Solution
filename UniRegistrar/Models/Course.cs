@@ -16,7 +16,9 @@ namespace UniRegistrar.Models
 
     public string CourseDescription { get; set; }
 
-    public virtual ICollection<CourseStudent> JoinEntities { get; set; }
+    public virtual ICollection<CourseStudent> JoinEntities { get; set; }  // many-to-many
+    public virtual Department Department  { get; set; }  //one-to-many
+    public int DepartmentId { get; set; }
   }
 }
 

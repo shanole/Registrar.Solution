@@ -16,6 +16,8 @@ namespace UniRegistrar.Models
     public DateTime EnrollmentDate { get; set; }
 
     public virtual ICollection<CourseStudent> JoinEntities { get; }
+    public virtual Department Department  { get; set; }
 
+    public int DepartmentId { get; set; }
   }
 }

@@ -16,7 +16,10 @@
   @Html.Label("Enrollment date")
   @Html.EditorFor(model => model.EnrollmentDate, new { @type = "date", @class = "form-control datepicker" })
 
-  <input type="submit" value="Save" />
+  @Html.Label("Select Major")
+  @Html.DropDownList("DepartmentId")
+
+  <input type="submit" value="Save" required="true"/>
 }
 
 <ul class="menu-links">

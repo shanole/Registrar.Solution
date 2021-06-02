@@ -1,8 +1,9 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using UniRegistrar.Models;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UniRegistrar.Controllers
 {
@@ -23,6 +24,7 @@ namespace UniRegistrar.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
       return View();
     }
 
@@ -44,6 +46,7 @@ namespace UniRegistrar.Controllers
 
     public ActionResult Edit(int id)
     {
+      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
       Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
       return View(thisCourse);
     }

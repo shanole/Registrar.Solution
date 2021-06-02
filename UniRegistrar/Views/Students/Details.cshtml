@@ -8,6 +8,7 @@
 
 <h3>@Html.DisplayFor(model => model.StudentName)<h3>
 <p>Enrollment date: @Model.EnrollmentDate.ToShortDateString()</p>
+<p>Major: @Html.ActionLink($"{Model.Department.DepartmentName}", "Details", "Departments", new {id = Model.Department.DepartmentId})</p>
 
 @if(@Model.JoinEntities.Count ==0)
 {

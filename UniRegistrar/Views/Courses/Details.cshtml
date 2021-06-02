@@ -6,6 +6,7 @@
 
 <h2>Course Details</h2>
 <h3>@Html.DisplayFor(model => model.CourseNumber) @Html.DisplayFor(model => model.CourseName)</h3>
+<h4>Department: @Html.ActionLink($"{Model.Department.DepartmentName}", "Details", "Departments", new {id = Model.Department.DepartmentId})</h4>
 <h4>Course Description: </h4>
 <p>@Html.DisplayFor(model => model.CourseDescription)</p>
 

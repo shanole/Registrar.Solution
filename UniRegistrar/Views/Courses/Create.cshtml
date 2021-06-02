@@ -8,13 +8,16 @@
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.CourseName)
-  @Html.TextBoxFor(model => model.CourseName)
+  @Html.TextBoxFor(model => model.CourseName, new { @class = "form-control", required = "required"})
 
   @Html.LabelFor(model => model.CourseNumber)
-  @Html.TextBoxFor(model => model.CourseNumber)
+  @Html.TextBoxFor(model => model.CourseNumber, new { @class = "form-control", required = "required"})
 
   @Html.LabelFor(model => model.CourseDescription)
-  @Html.TextBoxFor(model => model.CourseDescription)
+  @Html.TextBoxFor(model => model.CourseDescription, new { @class = "form-control", required = "required"})
+
+  @Html.Label("Select Department")
+  @Html.DropDownList("DepartmentId")
 
   <input type="submit" value="Add a new course" />
 }
