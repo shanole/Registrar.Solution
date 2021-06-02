@@ -73,5 +73,12 @@ namespace UniRegistrar.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Search(string search)
+    {
+      return View(_db.Courses.Where(course => course.CourseDescription.Contains(search) || course.CourseName.Contains(search)).ToList());
+    }
+
+
   }
 }
