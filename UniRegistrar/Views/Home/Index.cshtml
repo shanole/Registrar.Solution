@@ -2,10 +2,49 @@
   Layout = "_Layout";
 }
 
+@using UniRegistrar.Models
+
 <h1>Pigwarts School of Magic and Trickery Registrar</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Students Currently Enrolled at Pigwarts</h4>
+      @if (@ViewBag.StudentObj.Count == 0)
+      {
+        <h3>We have no Students yet.</h3>
+      }
+      @foreach(Student student in @ViewBag.StudentObj)
+      {
+        <li>@student.StudentName</li>
+      }
+    </div>
+    <div class="col-md-6">
+      <h4>Courses Currently Offered at Pigwarts</h4>
+      @if (@ViewBag.CourseObj.Count == 0)
+      {
+        <h3>We have no courses yet.</h3>
+      }
+
+      @foreach(Course course in @ViewBag.CourseObj)
+      {
+        <li>@course.CourseNumber | @course.CourseName</li>
+      }
+    </div>
+  </div>
+</div>
+
 
 <ul class="menu-links">
   <li>@Html.ActionLink("Student directory","Index","Students")</li>
   <li>@Html.ActionLink("Course catalog","Index","Courses")</li>
   <li>@Html.ActionLink("Departments","Index","Departments")</li>
 </ul>
+
+
+
+
+
+
+
