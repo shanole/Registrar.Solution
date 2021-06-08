@@ -52,7 +52,7 @@ Installation
 
 ## Schema <a id="schema"></a>
 
-![schema design]()
+![schema design](https://github.com/shanole/Registrar.Solution/blob/main/schema.png?raw=true)
 
 ## Known Bugs <a id="bugs"></a>
 * In Search route for courses (`searches/courses`), the message "No courses match your search query" displays before a search has been made.
